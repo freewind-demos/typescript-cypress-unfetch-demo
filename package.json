@@ -1,14 +1,17 @@
 {
   "scripts": {
+    "server": "http-server ./public -c-1 -o -p 12321",
     "test:open": "cypress open",
     "test:run": "cypress run"
   },
   "devDependencies": {
     "@cypress/webpack-preprocessor": "4.0.3",
     "cypress": "3.2.0",
-    "ts-loader": "5.3.3",
-    "typescript": "3.2.2",
-    "webpack": "4.8.3",
-    "webpack-cli": "3.3.0"
+    "http-server": "0.11.1",
+    "ts-loader": "5.4.3",
+    "typescript": "3.4.4",
+    "unfetch": "4.1.0",
+    "webpack": "4.30.0",
+    "webpack-cli": "3.3.1"
   }
 }

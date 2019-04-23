@@ -1,39 +1,21 @@
-import {add} from '../../add'
+describe('Cypress', () => {
 
-describe('TypeScript', () => {
-  it('works', () => {
-    // note TypeScript definition
-    const x: number = 42
-  })
+  it('should intercept window.fetch with unfetch', () => {
+    cy.visit('/index.html', {
+      onBeforeLoad(win: Window): void {
+        // cy.request('/data.json')
+      }
+    });
 
-  it('checks shape of an object', () => {
-    const object = {
-      age: 21,
-      name: 'Joe',
-    }
-    expect(object).to.have.all.keys('name', 'age')
-  })
+    cy.server();
+    cy.route('GET', '/data.json').as('fetchData');
 
-  it('uses cy commands', () => {
-    cy.wrap({}).should('deep.eq', {})
-  })
+    cy.get('button').click();
 
-  it('tests our example site', () => {
-    cy.visit('https://example.cypress.io/')
-    cy.get('.home-list')
-      .contains('Querying')
-      .click()
-    cy.get('#query-btn').should('contain', 'Button')
-  })
+    cy.wait('@fetchData').its('status').should('eq', 200);
 
-  // enable once we release updated TypeScript definitions
-  it('has Cypress object type definition', () => {
-    expect(Cypress.version).to.be.a('string')
-  })
+    cy.get('#data').should('have.text', 'Hello, cypress!')
 
-
-  it('adds numbers', () => {
-    expect(add(2, 3)).to.equal(5)
   })
 
 })

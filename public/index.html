@@ -1,0 +1,15 @@
+<html>
+<script>
+  function fetchData() {
+    fetch('/data.json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('data').innerText = data.message;
+      })
+  }
+</script>
+<body>
+<button onclick="fetchData()">Fetch Data</button>
+<div id="data"></div>
+</body>
+</html>
