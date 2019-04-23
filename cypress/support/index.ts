@@ -16,7 +16,7 @@
 // let unfetchPolyfill: string = '';
 //
 // before(() => {
-//   const polyfillUrl = 'https://unpkg.com/unfetch/dist/unfetch.umd.js'
+//   const polyfillUrl = 'https://unpkg.com/unfetch@4.1.0/dist/unfetch.umd.js'
 //   cy.request(polyfillUrl)
 //     .then((response) => {
 //       unfetchPolyfill = response.body
