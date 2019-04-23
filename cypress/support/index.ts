@@ -13,10 +13,8 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-// Import commands.js using ES2015 syntax:
-import './commands'
-
-// let unfetchPolyfill;
+// let unfetchPolyfill: string = '';
+//
 // before(() => {
 //   const polyfillUrl = 'https://unpkg.com/unfetch/dist/unfetch.umd.js'
 //   cy.request(polyfillUrl)
@@ -31,7 +29,7 @@ console.log("fetch",fetch);
 //# sourceMappingURL=unfetch.umd.js.map
 `
 
-Cypress.on('window:before:load', (win) => {
+Cypress.on('window:before:load', (win: any) => {
   if (win.unfetch) {
     return;
   }
