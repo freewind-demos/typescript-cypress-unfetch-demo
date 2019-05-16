@@ -10,7 +10,7 @@ TypeScript Cypress Unfetch Demo
 2. 在`win.eval(unfetchPolyfill)`前，旧版本(3.x)的unfetch一定要先删除`window.fetch`，因为unfetch内部会先尝试使用window.fetch，但是新版本（4.x)不需要
 3. 在`Cypress.on`内部不能使用`cy.request`，因为它会在`cy.visit`中被调用，而cypress为了维护内部逻辑，不允许这样调用。
    所以如果我们想通过`cypress.request`拿unfetch代码，那么可以把它放在外面，比如另一个`before()`中。
-4. 不能从本地拿unfetch，`import unfetch from 'unfetch'`，因为没有在目标window中运行，内部使用的xhr还是最外层window的，会导致cypress依旧无法捕获。
+4. 可以使用`cy.readFile`从本地拿unfetch对应的代码，这种方法最好
 
 ```
 npm install
